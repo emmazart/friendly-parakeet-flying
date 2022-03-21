@@ -9,6 +9,51 @@
 // password criteria array
 var passwordCriteria = ["LOWERCASE", "UPPERCASE", "NUMERIC", "SPECIAL"];
 
+// for loop cycling through array 
+var generateCriteria = function(){  
+  for (var i = 0; i < passwordCriteria.length; i++) {
+      var pickedCriteria = passwordCriteria[i]
+      var promptCriteria = window.prompt("Would you like to include " + pickedCriteria + " characters? Enter 'YES' or 'NO'");
+  
+      // if yes, store information for later
+      switch (promptCriteria) {
+        case "yes":
+        case "YES":
+          console.log(pickedCriteria);
+          break;
+        case "no":
+        case "NO":
+          break;
+        default:
+          window.alert("Please choose a valid option.")
+          generateCriteria();
+          break;
+      }
+
+
+
+
+      // if (promptCriteria === "yes" || promptCriteria === "YES") {
+      //   console.log(pickedCriteria);
+      // } else if (promptCriteria === "no" || promptCriteria === "NO") {
+      //   //nothing happens
+      // }
+      // else {
+      //   window.alert("Please choose a valid option.");
+      //   generateCriteria();
+      // }
+  
+      // //if any of the array values are true, move on
+      // if (passwordCriteria[i] = true) {
+      //   // send information onward
+      // }
+      // else {
+      //   window.alert("You must select at least one character type. Please try again!");
+      //   generateCriteria();
+      // }
+    }
+  };  
+
 // define generatePassword function
 var generatePassword = function(){
   window.alert("Please follow the prompts to select your password criteria.");
@@ -23,35 +68,13 @@ var generatePassword = function(){
   else {
     console.log(passwordLength);
   }
-
 // store that information for later
 
-// for loop cycling through array 
-  for (var i = 0; i < passwordCriteria.length; i++) {
-    var pickedCriteria = passwordCriteria[i]
-    var promptCriteria = window.prompt("Would you like to include " + pickedCriteria + " characters? Enter 'YES' or 'NO'");
+generateCriteria();
 
-    // if yes, store information for later
-    if (promptCriteria === "yes" || promptCriteria === "YES") {
-      console.log(pickedCriteria);
-    } else if (promptCriteria === "no" || promptCriteria === "NO") {
-      //nothing happens
-    }
-    else {
-      // window.alert("Please choose a valid option.");
-      // generatePassword();
-    }
-
-    // //if any of the array values are true, move on
-    // if (passwordCriteria[i] = true) {
-    //   // send information onward
-    // }
-    // else {
-    //   window.alert("You must select at least one character type. Please try again!");
-    //   generatePassword();
-    // }
-  }
 };
+
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
