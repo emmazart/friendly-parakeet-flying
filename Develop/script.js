@@ -15,7 +15,15 @@ var generatePassword = function(){
 
 // ask user to input length of password
   let passwordLength = window.prompt("Please choose your password length (8-128 characters)");
-  console.log(passwordLength);
+  // validate password length input
+  if (passwordLength < 8 || passwordLength > 128){
+    window.alert("You must enter a valid password length.")
+    generatePassword();
+  }
+  else {
+    console.log(passwordLength);
+  }
+
 // store that information for later
 
 // for loop cycling through array 
@@ -26,9 +34,22 @@ var generatePassword = function(){
     // if yes, store information for later
     if (promptCriteria === "yes" || promptCriteria === "YES") {
       console.log(pickedCriteria);
+    } else if (promptCriteria === "no" || promptCriteria === "NO") {
+      //nothing happens
     }
-    // if no, nothing happens
-    else {}
+    else {
+      // window.alert("Please choose a valid option.");
+      // generatePassword();
+    }
+
+    // //if any of the array values are true, move on
+    // if (passwordCriteria[i] = true) {
+    //   // send information onward
+    // }
+    // else {
+    //   window.alert("You must select at least one character type. Please try again!");
+    //   generatePassword();
+    // }
   }
 };
 
