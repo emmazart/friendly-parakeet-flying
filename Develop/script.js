@@ -10,9 +10,32 @@
 var passwordCriteria = ["LOWERCASE", "UPPERCASE", "NUMERIC", "SPECIAL"];
 var userPickedCriteria = [];
 
-// var passwordObj = {
+// define function to read userPickedCriteria
+let upper = ["apples"];
+let lower = ["oranges"];
+let num = ["bananas"];
+let spec = ["grapes"];
 
-// }
+var readPickedCriteria = function() {
+  // if userPickedCriteria includes [criteria], then pull those characters
+  let toMatch = String(userPickedCriteria);
+  if (!toMatch.match("UPPERCASE")){
+  } else {
+    console.log("MATCHED! UPPERCASE")
+  }
+  if (!toMatch.match("LOWERCASE")){
+  } else {
+    console.log("MATCHED! LOWERCASE")
+  }
+  if (!toMatch.match("NUMERIC")){
+  } else {
+    console.log("MATCHED! NUMERIC")
+  }
+  if (!toMatch.match("SPECIAL")) {
+  } else {
+    console.log("MATCHED! SPECIAL")
+  }
+};
 
 // define generateCriteria function
 var generateCriteria = function(){  
@@ -27,10 +50,10 @@ var generateCriteria = function(){
         case "yes":
           console.log(pickedCriteria);
           // send pickedCriteria into an array
-          userPickedCriteria = (pickedCriteria + ", " + userPickedCriteria);
+          userPickedCriteria = (pickedCriteria + userPickedCriteria);
           break;
         case "no":
-          userPickedCriteria = (pickedCriteria + ", " + 0);
+          // userPickedCriteria = (userPickedCriteria + "reject");
           break;
         default:
           window.alert("Please choose a valid option.")
@@ -38,7 +61,6 @@ var generateCriteria = function(){
           break;
       }
     }
-    // return userPickedCriteria;
   };  
 
 // define generatePassword function
@@ -63,9 +85,14 @@ var generatePassword = function(){
   if (userPickedCriteria.length < 1) {
     window.alert("You must select at least one password criteria. Please try again.");
     generateCriteria();
+  }
+  else {
+    console.log(userPickedCriteria);
+    // return userPickedCriteria;
   };
 
   // IF ARRAY contains "CRITERIA" then do this?
+  readPickedCriteria();
 };
 
 
@@ -84,5 +111,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-
