@@ -8,57 +8,44 @@
 
 // password criteria array
 var passwordCriteria = ["LOWERCASE", "UPPERCASE", "NUMERIC", "SPECIAL"];
+var userPickedCriteria = [];
 
-// for loop cycling through array 
+// var passwordObj = {
+
+// }
+
+// define generateCriteria function
 var generateCriteria = function(){  
+  // for loop to cycle through passwordCriteria array
   for (var i = 0; i < passwordCriteria.length; i++) {
       var pickedCriteria = passwordCriteria[i]
       var promptCriteria = window.prompt("Would you like to include " + pickedCriteria + " characters? Enter 'YES' or 'NO'");
-  
+      let userInput = promptCriteria.toLowerCase();
+
       // if yes, store information for later
-      switch (promptCriteria) {
+      switch (userInput) {
         case "yes":
-        case "YES":
           console.log(pickedCriteria);
+          // send pickedCriteria into an array
+          userPickedCriteria = (pickedCriteria + ", " + userPickedCriteria);
           break;
         case "no":
-        case "NO":
+          userPickedCriteria = (pickedCriteria + ", " + 0);
           break;
         default:
           window.alert("Please choose a valid option.")
-          generateCriteria();
+          // generateCriteria();
           break;
       }
-
-
-
-
-      // if (promptCriteria === "yes" || promptCriteria === "YES") {
-      //   console.log(pickedCriteria);
-      // } else if (promptCriteria === "no" || promptCriteria === "NO") {
-      //   //nothing happens
-      // }
-      // else {
-      //   window.alert("Please choose a valid option.");
-      //   generateCriteria();
-      // }
-  
-      // //if any of the array values are true, move on
-      // if (passwordCriteria[i] = true) {
-      //   // send information onward
-      // }
-      // else {
-      //   window.alert("You must select at least one character type. Please try again!");
-      //   generateCriteria();
-      // }
     }
+    // return userPickedCriteria;
   };  
 
 // define generatePassword function
 var generatePassword = function(){
   window.alert("Please follow the prompts to select your password criteria.");
 
-// ask user to input length of password
+  // ask user to input length of password
   let passwordLength = window.prompt("Please choose your password length (8-128 characters)");
   // validate password length input
   if (passwordLength < 8 || passwordLength > 128){
@@ -68,10 +55,17 @@ var generatePassword = function(){
   else {
     console.log(passwordLength);
   }
-// store that information for later
+  // store that information for later
 
-generateCriteria();
+  generateCriteria();
 
+  // validate picked criteria to make sure user selected at least one item
+  if (userPickedCriteria.length < 1) {
+    window.alert("You must select at least one password criteria. Please try again.");
+    generateCriteria();
+  };
+
+  // IF ARRAY contains "CRITERIA" then do this?
 };
 
 
