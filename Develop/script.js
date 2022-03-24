@@ -11,30 +11,38 @@ var passwordCriteria = ["LOWERCASE", "UPPERCASE", "NUMERIC", "SPECIAL"];
 var userPickedCriteria = [];
 
 // define function to read userPickedCriteria
-let upper = ["apples"];
-let lower = ["oranges"];
-let num = ["bananas"];
-let spec = ["grapes"];
+var passwordContent = [];
 
 var readPickedCriteria = function() {
-  // if userPickedCriteria includes [criteria], then pull those characters
+  // if userPickedCriteria includes [criteria]
   let toMatch = String(userPickedCriteria);
   if (!toMatch.match("UPPERCASE")){
   } else {
     console.log("MATCHED! UPPERCASE")
+    // define a variable associated with that criteria
+    let upper = ["apples"];
+    passwordContent = (passwordContent + upper);
+    // and add it to the password
   }
   if (!toMatch.match("LOWERCASE")){
   } else {
     console.log("MATCHED! LOWERCASE")
+    let lower = ["oranges"];
+    passwordContent = (passwordContent + lower);
   }
   if (!toMatch.match("NUMERIC")){
   } else {
     console.log("MATCHED! NUMERIC")
+    let num = ["bananas"];
+    passwordContent = (passwordContent + num);
   }
   if (!toMatch.match("SPECIAL")) {
   } else {
     console.log("MATCHED! SPECIAL")
+    let spec = ["grapes"];
+    passwordContent = (passwordContent + spec);
   }
+  console.log(passwordContent);
 };
 
 // define generateCriteria function
@@ -53,7 +61,7 @@ var generateCriteria = function(){
           userPickedCriteria = (pickedCriteria + userPickedCriteria);
           break;
         case "no":
-          // userPickedCriteria = (userPickedCriteria + "reject");
+          // nothing happens
           break;
         default:
           window.alert("Please choose a valid option.")
@@ -62,6 +70,7 @@ var generateCriteria = function(){
       }
     }
   };  
+
 
 // define generatePassword function
 var generatePassword = function(){
@@ -77,8 +86,8 @@ var generatePassword = function(){
   else {
     console.log(passwordLength);
   }
-  // store that information for later
 
+  // define generateCriteria function to prompt through criteria array & receive user input
   generateCriteria();
 
   // validate picked criteria to make sure user selected at least one item
@@ -93,8 +102,8 @@ var generatePassword = function(){
 
   // IF ARRAY contains "CRITERIA" then do this?
   readPickedCriteria();
+  return passwordContent;
 };
-
 
 
 // Get references to the #generate element
