@@ -37,9 +37,10 @@ Main application code runs through JavaScript.
 
 ## Deployed Application
 
-[(Link to deployed application)](LINK GOES HERE)
+[(Link to deployed application)](https://emmazart.github.io/friendly-parakeet-flying/)
 
-Screenshot of deployed application:
+### Screenshot of deployed application:
+
 Criteria given for the screenshot: Password length = 10 / Characteristics selected = lowercase, numeric, special
 
 ![Screenshot of Password Generator Application](./assets/images/password-generator-screenshot.png)
