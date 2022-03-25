@@ -88,6 +88,7 @@ var generateCriteria = function(){
           break;
         default:
           window.alert("Please choose a valid option.")
+          // rerun current prompt iteration
           // generateCriteria();
           break;
       }
@@ -123,7 +124,7 @@ var generatePassword = function(){
     console.log(userPickedCriteria);
   };
 
-  // IF ARRAY contains "CRITERIA" then do this?
+  // IF ARRAY contains "CRITERIA" then do this
   readPickedCriteria();
   // display passwordContent to page
   console.log(passwordContent);
@@ -147,7 +148,6 @@ function getRandom(arr){
   return randomElement
 }
 
-
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
@@ -157,7 +157,6 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
