@@ -126,7 +126,7 @@ var generatePassword = function(){
 
   // IF ARRAY contains "CRITERIA" then do this
   readPickedCriteria();
-  // display passwordContent to page
+  // display passwordContent to console
   console.log(passwordContent);
 
   // turn passwordContent into an array
