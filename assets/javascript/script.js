@@ -6,15 +6,13 @@
 //when all prompts are answered, then generate a password matching criteria
 //when generated, password is displayed in alert or written to the page
 
-// password criteria array
+// define global arrays
 var passwordCriteria = ["LOWERCASE", "UPPERCASE", "NUMERIC", "SPECIAL"];
 var userPickedCriteria = [];
 var passwordArray = [];
-
-
-// define function to read userPickedCriteria
 var passwordContent = [];
 
+// define function to read userPickedCriteria
 var readPickedCriteria = function() {
   // if userPickedCriteria includes [criteria]
   let toMatch = String(userPickedCriteria);
@@ -65,7 +63,7 @@ var readPickedCriteria = function() {
       passwordArray.push(randomCharacter);
   }
   passwordContent = String(passwordContent);
-};
+}
 };
 
 // define generateCriteria function
@@ -76,38 +74,22 @@ var generateCriteria = function(){
       var promptCriteria = window.prompt("Would you like to include " + pickedCriteria + " characters? Enter 'YES' or 'NO'");
       let userInput = promptCriteria.toLowerCase();
 
+      // if yes, save for later / if no, do nothing / if default, try again
       switch (userInput) {
         case "yes":
           console.log(pickedCriteria);
           // send pickedCriteria into an array
-          userPickedCriteria = (pickedCriteria + userPickedCriteria);
+          userPickedCriteria.push(pickedCriteria);
           break;
         case "no":
           // nothing happens
           break;
         default:    
-          window.alert('Please enter either "YES" or "NO"');
+          window.alert('Please try again. Enter either "YES" or "NO"');
           return generateCriteria();
       }
     }
 };
-
-// var defaultValidate = function() {
-//   // while userInput != yes or no
-//     while (userInput != "yes" || userInput != "no"){
-//     // rerun current prompt iteration until valid input is detected
-//     var promptCriteria = window.prompt("Would you like to include " + pickedCriteria + " characters? Enter 'YES' or 'NO'");
-//     if (promptCriteria == "yes"){
-//       userPickedCriteria = (pickedCriteria + userPickedCriteria);
-//     } else if (promptCriteria == "no"){
-//       // nothing happens
-//     } else {
-//       defaultValidate();
-//     }
-
-// }
-// }
-
 
 // define generatePassword function
 var generatePassword = function(){
@@ -122,7 +104,6 @@ var generatePassword = function(){
   }
   else {
     console.log(passwordLength);
-    passwordLength = parseInt(passwordLength);
   }
 
   // define generateCriteria function to prompt through criteria array & receive user input
@@ -148,6 +129,7 @@ var generatePassword = function(){
   passwordLength = (passwordLength - passwordArray.length);
   // loop through passwordContent as many times as our password character length
   for (let i = 0; i < passwordLength; i++) {
+    // call getRandom & pass through passwordContent as an argument
     var randomCharacter = getRandom(passwordContent);
     passwordArray.push(randomCharacter);
   }
@@ -155,6 +137,7 @@ var generatePassword = function(){
   return passwordArray.join("");
 };
 
+// define getRandom function
 function getRandom(arr){
   var randomIndex = Math.floor(Math.random() * arr.length);
   var randomElement = arr[randomIndex];
