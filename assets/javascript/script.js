@@ -76,7 +76,6 @@ var generateCriteria = function(){
       var promptCriteria = window.prompt("Would you like to include " + pickedCriteria + " characters? Enter 'YES' or 'NO'");
       let userInput = promptCriteria.toLowerCase();
 
-      // if yes, store information for later
       switch (userInput) {
         case "yes":
           console.log(pickedCriteria);
@@ -87,12 +86,19 @@ var generateCriteria = function(){
           // nothing happens
           break;
         default:
-          window.alert("Please choose a valid option.")
-          // rerun current prompt iteration
-          // generateCriteria();
+          // while userInput != yes or no
+          while (userInput != "yes" || userInput != "no"){
+          // rerun current prompt iteration until valid input is detected
+          var promptCriteria = window.prompt("Would you like to include " + pickedCriteria + " characters? Enter 'YES' or 'NO'");
+          if (promptCriteria === "yes"){
+            userPickedCriteria = (pickedCriteria + userPickedCriteria);
+          } else if (promptCriteria === "no"){
+            // nothing happens
+          }
           break;
       }
     }
+  }
   };  
 
 
