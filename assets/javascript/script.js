@@ -85,21 +85,28 @@ var generateCriteria = function(){
         case "no":
           // nothing happens
           break;
-        default:
-          // while userInput != yes or no
-          while (userInput != "yes" || userInput != "no"){
-          // rerun current prompt iteration until valid input is detected
-          var promptCriteria = window.prompt("Would you like to include " + pickedCriteria + " characters? Enter 'YES' or 'NO'");
-          if (promptCriteria === "yes"){
-            userPickedCriteria = (pickedCriteria + userPickedCriteria);
-          } else if (promptCriteria === "no"){
-            // nothing happens
-          }
-          break;
+        default:    
+          window.alert('Please enter either "YES" or "NO"');
+          return generateCriteria();
       }
     }
-  }
-  };  
+};
+
+// var defaultValidate = function() {
+//   // while userInput != yes or no
+//     while (userInput != "yes" || userInput != "no"){
+//     // rerun current prompt iteration until valid input is detected
+//     var promptCriteria = window.prompt("Would you like to include " + pickedCriteria + " characters? Enter 'YES' or 'NO'");
+//     if (promptCriteria == "yes"){
+//       userPickedCriteria = (pickedCriteria + userPickedCriteria);
+//     } else if (promptCriteria == "no"){
+//       // nothing happens
+//     } else {
+//       defaultValidate();
+//     }
+
+// }
+// }
 
 
 // define generatePassword function
